@@ -7,7 +7,12 @@
     Try changing "table" to "view" below
 */
 
-{{ config(materialized='table') }}
+{{
+    config(
+        materialized='view',
+        query_tag = 'dbt'
+    )
+}}
 
 with source_data as (
 
