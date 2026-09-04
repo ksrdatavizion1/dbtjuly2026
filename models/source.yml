@@ -1,0 +1,17 @@
+version: 2 
+
+sources:
+  - name: raw_data  #logical source
+    schema: SF_SCHEMA  #schema 1
+    database: SNOWFLAKE_DBT_DATA # 1 database 
+    tables: # n no of tables 
+      - name: Cust   #logical name
+        identifier: CUSTOMERS  # actual table
+      - name : sales
+        identifier: SALES_DATA
+  - name : prod_data  # 2nd logical bame 
+    schema: PROD_SCH
+    database: SNOWFLAKE_DBT_DATA
+    tables:
+      - name: prod
+        identifier: PRODUCT  #
