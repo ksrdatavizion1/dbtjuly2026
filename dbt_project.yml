@@ -42,6 +42,11 @@ models:
       +database: DBT_LABS
       +schema: RAW_SCHEMA
       +transient: False
+      Raw_orders:
+        +materialized:  incremental
+        +incremental_strategy: delete+insert
+        +unique_key: order_id
+        +on_schema_change: fail
     silver:
       +materialized: view
       +database: DBT_LABS

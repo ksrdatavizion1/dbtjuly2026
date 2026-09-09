@@ -9,6 +9,8 @@ sources:
         identifier: CUSTOMERS  # actual table
       - name : sales
         identifier: SALES_DATA
+      - name : ord
+        identifier: orders
   - name : prod_data  # 2nd logical bame 
     schema: PROD_SCH
     database: SNOWFLAKE_DBT_DATA
