@@ -57,3 +57,20 @@ models:
       +schema: gold_SCHEMA
 
 
+seeds: 
+  my_new_project :
+    +schema: SEEDS_DATA
+    +database: DBT_LABS
+    country :  # seed name
+      +column_types:
+        country_code : varchar(100)
+        country_name : varchar(100)
+        region : varchar(100)
+        currency : varchar(100)
+    country_pop :
+      +column_types:
+        country_code : varchar(5)
+        population_millions : Number(10,0)
+        gdp_usd_billions : Number(10,2)
+    country_internet :
+      +delimiter: '|'
