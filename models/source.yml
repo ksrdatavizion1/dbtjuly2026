@@ -28,3 +28,9 @@ sources:
     tables:
       - name: prod
         identifier: PRODUCT  #
+  - name : sales
+    schema : PUBLIC
+    database: DBT_LABS
+    tables:
+      - name: sale
+        identifier: SALES_ORDERS

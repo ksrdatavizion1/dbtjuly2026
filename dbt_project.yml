@@ -55,7 +55,13 @@ models:
       +materialized: view
       +database: DBT_LABS
       +schema: gold_SCHEMA
-
+vars:
+  database_name : SNOWFLAKE_DBT_DATA
+  schema_name : SF_SCHEMA
+  customer_state : kerala
+  plan_type : Postpaid
+  reporting_year :
+  reporting_month :
 
 seeds: 
   my_new_project :
