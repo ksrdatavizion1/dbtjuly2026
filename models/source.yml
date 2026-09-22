@@ -15,13 +15,44 @@ sources:
         identifier: SUPPLY_CHAIN_ORDERS
       - name : tel_cust
         identifier: TELECOM_CUSTOMERS
+        columns:
+          - name: CUSTOMER_ID
+            tests:
+              - not_null
+              - unique
+          - name: EMAIL
+            tests:
+              - unique
+              - valid_email_format
+          - name: GENDER
+            tests:
+              - accepted_values:
+                  arguments: 
+                  values: ['Male','Female']
+          - name : AGE 
+            tests:
+              - value_range:
+                  config: 
+                    severity: warn
+                  min_val : 18
+                  max_val: 30   
+
       - name : tel_phone
         identifier: TELECOM_PLANS
-      - name : tele_cust
-        identifier: TELECOM_CUSTOMERS
-        loaded_at_field : "convert_timezone('UTC', registered_on)"
-        freshness:
-          error_after: {count : 1, period : hour}
+        columns:
+          - name: CUSTOMER_ID
+            tests:
+              - not_null:
+                  config: 
+                    severity: warn
+              - relationships:
+                  config: 
+                    severity: warn
+                  arguments:
+                  to: source('raw_data', 'tel_cust')
+                  field: CUSTOMER_ID
+              
+        
   - name : prod_data  # 2nd logical bame 
     schema: PROD_SCH
     database: SNOWFLAKE_DBT_DATA

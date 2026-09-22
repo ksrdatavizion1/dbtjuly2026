@@ -1,0 +1,1 @@
+Select * from {{source('raw_data', 'tel_phone')}}
